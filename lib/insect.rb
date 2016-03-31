@@ -11,5 +11,5 @@ class Insect < ActiveRecord::Base
 
  	belongs_to :researcher
 	has_many :papers
-  end
+
 end
