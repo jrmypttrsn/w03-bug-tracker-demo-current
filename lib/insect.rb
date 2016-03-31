@@ -5,11 +5,11 @@
 
 class Insect < ActiveRecord::Base
   
-  def researcher
-    Researcher.find_by_id(researcher_id)
-  end
+  validates :name, presence: true
+  validates :loctation, presence: true
+  validates :description, presence: true
 
-  def papers
-    Paper.where(insect_id: id)
+ 	belongs_to :researcher
+	has_many :papers
   end
 end

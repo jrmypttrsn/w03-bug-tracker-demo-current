@@ -4,22 +4,10 @@
 
 class Researcher < ActiveRecord::Base
 
-  def my_valid?
-    if name.nil? || name.empty? 
-      false
-    elsif age.nil? || age < 21
-      false
-    else
-      true
-    end
-  end
 
-  def insects
-    Insect.where(researcher_id: id)
-  end
+  validates :name, presence: true
+  validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
-  def papers
-    Paper.where(researcher_id: id)
-  end
-
+  has_many :insects
+  has_many :papers
 end
